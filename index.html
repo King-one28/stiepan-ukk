@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Kesehatan &amp; Konseling STIEPAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1E6FA8;
+    --blue-deep:#155886;
+    --blue-tint:#EAF3FA;
+    --teal:#2C8C79;
+    --teal-tint:#E7F3F0;
+    --amber:#C88A2E;
+    --amber-tint:#FBF2E4;
+    --rose:#C4526A;
+    --rose-tint:#FBEAEE;
+    --ink:#1B2733;
+    --ink-soft:#5B6B78;
+    --paper:#FFFFFF;
+    --bg-tint:#F6F9FB;
+    --line:rgba(27,39,51,.12);
+    --display:'Source Serif 4', serif;
+    --body:'Inter', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media(prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  }
+
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  h1,h2,h3{font-family:var(--display);font-weight:600;color:var(--ink);letter-spacing:-.01em;}
+
+  .eyebrow{
+    display:flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:16px;
+  }
+  .eyebrow .chip{width:8px;height:8px;border-radius:2px;background:var(--blue);flex-shrink:0;}
+
+  /* ---------- nav ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(93, 160, 204, 0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);color:var(--paper);font-size:17.5px;font-weight:600;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:8px;background:var(--blue);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .brand-mark img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+  .brand-text small{display:block;font-family:var(--mono);font-size:9.5px;color:var(--paper);font-weight:400;letter-spacing:.08em;text-transform:uppercase;margin-top:1px;}
+
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--paper);transition:color .18s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    background:var(--blue);color:#fff !important;padding:10px 20px;border-radius:6px;
+    font-weight:600 !important;font-size:13.5px !important;transition:background .18s ease;
+  }
+  .nav-cta:hover{background:var(--blue-deep);}
+
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .menu-btn span{display:block;width:20px;height:1.5px;background:var(--ink);margin:5px 0;}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:6px;font-weight:600;font-size:14.5px;transition:background .18s ease, border-color .18s ease, transform .18s ease;}
+  .btn-primary{background:var(--blue);color:#fff;}
+  .btn-primary:hover{background:var(--blue-deep);}
+  .btn-outline{border:1px solid var(--line);color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 76px;border-bottom:1px solid var(--line);}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;}
+  .hero h1{font-size:clamp(36px,4.2vw,52px);line-height:1.12;margin-bottom:20px;}
+  .hero p.lead{font-size:17px;color:var(--ink-soft);max-width:48ch;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+
+  .stat-row{display:flex;gap:0;border-top:1px solid var(--line);padding-top:24px;}
+  .stat{flex:1;padding-right:20px;}
+  .stat b{display:block;font-family:var(--display);font-size:22px;margin-bottom:3px;}
+  .stat span{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;}
+
+  .hero-visual{
+    background:var(--blue-tint);border-radius:16px;padding:36px;
+    aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .hero-visual svg{width:100%;height:auto;}
+  .pulse-path{fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:700;stroke-dashoffset:700;animation:draw 2.6s ease-out forwards .2s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .visual-foot{display:flex;justify-content:space-between;align-items:flex-end;}
+  .visual-foot .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-deep);}
+  .visual-foot .label strong{display:block;font-family:var(--display);font-size:15px;color:var(--ink);font-weight:600;text-transform:none;letter-spacing:0;margin-top:3px;}
+
+  /* ---------- section shell ---------- */
+  section{padding:84px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{display:grid;grid-template-columns:.34fr .66fr;gap:40px;margin-bottom:48px;align-items:start;}
+  .section-head h2{font-size:clamp(26px,2.6vw,32px);line-height:1.18;}
+  .section-head p{color:var(--ink-soft);font-size:15.5px;max-width:46ch;}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;}
+  .visi-card{background:var(--ink);color:#fff;border-radius:14px;padding:34px 30px;}
+  .visi-card .eyebrow{color:#B9CBD9;}
+  .visi-card .eyebrow .chip{background:var(--amber);}
+  .visi-card p{font-family:var(--display);font-size:18.5px;line-height:1.55;font-style:italic;}
+
+  .misi-list{display:flex;flex-direction:column;}
+  .misi-item{display:grid;grid-template-columns:36px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line);}
+  .misi-item:first-child{border-top:none;padding-top:0;}
+  .misi-num{font-family:var(--mono);font-size:12.5px;color:var(--blue-deep);padding-top:2px;}
+  .misi-item p{color:var(--ink-soft);font-size:14.5px;}
+
+  /* ---------- layanan ---------- */
+  .layanan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .layanan-card{background:#fff;padding:28px 24px;position:relative;}
+  .layanan-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+  .layanan-card:nth-child(1)::before{background:var(--blue);}
+  .layanan-card:nth-child(2)::before{background:var(--teal);}
+  .layanan-card:nth-child(3)::before{background:var(--rose);}
+  .layanan-card:nth-child(4)::before{background:var(--amber);}
+  .layanan-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:18px;}
+  .layanan-card:nth-child(1) .layanan-icon{background:var(--blue-tint);}
+  .layanan-card:nth-child(2) .layanan-icon{background:var(--teal-tint);}
+  .layanan-card:nth-child(3) .layanan-icon{background:var(--rose-tint);}
+  .layanan-card:nth-child(4) .layanan-icon{background:var(--amber-tint);}
+  .layanan-card h3{font-size:16px;font-weight:600;margin-bottom:9px;line-height:1.3;font-family:var(--display);}
+  .layanan-card p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- jam & lokasi ---------- */
+  .info-strip{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .info-cell{background:#fff;padding:32px 34px;}
+  .info-cell:nth-child(1){border-left:3px solid var(--blue);}
+  .info-cell:nth-child(2){border-left:3px solid var(--teal);}
+  .info-cell .tag{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);}
+  .info-cell h3{font-size:21px;line-height:1.3;margin:10px 0 8px;}
+  .info-cell p{color:var(--ink-soft);font-size:14.5px;}
+
+  /* ---------- SOP ---------- */
+  .timeline{border-top:1px solid var(--line);}
+  .tl-item{display:grid;grid-template-columns:100px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);}
+  .tl-num{font-family:var(--display);font-size:32px;font-weight:600;color:var(--blue-tint);-webkit-text-stroke:1px var(--blue);}
+  .tl-item:last-child .tl-num{-webkit-text-stroke:1px var(--rose);color:var(--rose-tint);}
+  .tl-body h3{font-size:17px;margin-bottom:6px;}
+  .tl-body p{color:var(--ink-soft);font-size:14.5px;max-width:62ch;}
+
+  /* ---------- formulir & kontak ---------- */
+  .digital-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+  .digital-card{background:#fff;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:200px;transition:background .18s ease;}
+  .digital-card:hover{background:var(--bg-tint);}
+  .digital-card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--blue-deep);}
+  .digital-card h3{font-size:20px;margin:10px 0 6px;}
+  .digital-card p{font-size:14px;color:var(--ink-soft);max-width:42ch;}
+  .digital-card .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--blue-deep);align-self:flex-start;border-bottom:1px solid var(--blue-deep);padding-bottom:2px;}
+
+  .contact-strip{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    background:var(--rose-tint);border:1px solid var(--line);border-left:3px solid var(--rose);
+    border-radius:12px;padding:24px 30px;
+  }
+  .contact-strip .who{display:flex;align-items:center;gap:16px;}
+  .contact-strip .icon-wa{width:42px;height:42px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-strip .who h4{font-family:var(--display);font-size:16.5px;font-weight:600;}
+  .contact-strip .who p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- footer ---------- */
+  footer{padding:44px 0 36px;top:0;z-index:50;background:rgba(93, 160, 204, 0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .brand{font-size:14.5px;}
+  .foot-links{display:flex;gap:22px;}
+  .foot-links a{font-size:13.5px;color:var(--paper);}
+  .foot-links a:hover{color:var(--ink);}
+  .foot-note{font-family:var(--mono);font-size:12px;color:var(--paper);}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:920px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{max-width:380px;}
+    .section-head{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .layanan-grid{grid-template-columns:1fr 1fr;}
+    .info-strip{grid-template-columns:1fr;}
+    .digital-grid{grid-template-columns:1fr;}
+    .tl-item{grid-template-columns:56px 1fr;}
+    .tl-num{font-size:22px;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px;}
+    .layanan-grid{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+    .hero{padding:52px 0 44px;}
+    .contact-strip{flex-direction:column;align-items:flex-start;}
+    .stat-row{flex-direction:column;gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <img src="logostiepan.jpeg" alt="Logo STIEPAN">
+      </span>
+      <span class="brand-text">UNIT KESEHATAN<small>&amp; Konseling · STIEPAN</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#lokasi">Jam &amp; Lokasi</a>
+      <a href="#sop">Alur Layanan</a>
+      <a href="#formulir" class="nav-cta">Formulir &amp; Kontak</a>
+    </div>
+    <button class="menu-btn" aria-label="Buka menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="mnav" class="wrap" style="display:none;flex-direction:column;gap:2px;padding-bottom:18px;">
+    <a href="#tentang" style="padding:10px 0;">Tentang Kami</a>
+    <a href="#layanan" style="padding:10px 0;">Layanan</a>
+    <a href="#lokasi" style="padding:10px 0;">Jam &amp; Lokasi</a>
+    <a href="#sop" style="padding:10px 0;">Alur Layanan</a>
+    <a href="#formulir" style="padding:10px 0;">Formulir &amp; Kontak</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><span class="chip"></span> Layanan kesehatan dasar — gratis untuk civitas akademika</div>
+        <h1>Ruang nyaman untuk pulih.</h1>
+        <p class="lead">Kami mendampingi dan menjaga kesehatan fisik serta mental mahasiswa selama dinamika perkuliahan di Sekolah Tinggi Ilmu Ekonomi Balikpapan.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/6281236201376" class="btn btn-primary">Hubungi Pengurus</a>
+          <a href="#sop" class="btn btn-outline">Lihat alur penanganan</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>Gratis</b><span>Untuk seluruh mahasiswa</span></div>
+          <div class="stat"><b>Sen–Jum</b><span>Mengikuti jadwal kuliah</span></div>
+          <div class="stat"><b>Lantai 1</b><span>Sebelah dosen pascasarjana</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <svg viewBox="0 0 300 200" fill="none" xmlns="C:/laragon/www/stiepan/logostiepan.jpeg">
+          <path class="pulse-path" d="M0 130 L40 130 L52 96 L68 158 L84 84 L96 130 L112 130 Q 140 130 165 112 Q 195 90 225 112 Q 255 134 300 112"/>
+        </svg>
+        <div class="visual-foot">
+          <span class="label">Dipantau setiap hari<strong>Fisik &amp; Mental</strong></span>
+          <span class="label">Unit aktif<strong>Sen – Jum</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="tentang">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="chip"></span> Tentang Kami</div>
+        <div>
+          <h2>Fasilitas pelayanan kesehatan dasar bagi seluruh civitas akademika.</h2>
+          <p>Halo, rekan mahasiswa! Ruang Unit Kesehatan STIEPAN hadir cuma-cuma untuk kalian yang membutuhkan.</p>
+        </div>
+      </div>
+
+      <!-- GAMBAR DI TENGAH -->
+      <div style="text-align:center; margin:30px 0;">
+        <img src="strukturstiepan.jpeg" 
+              alt="struktur unit STIEPAN"
+              style="width:1000px; height:1000px; object-fit:contain; border-radius:10px;">
+     </div>
+
+      <div class="about-grid">
+        <div class="visi-card reveal">
+          <div class="eyebrow">Visi</div>
+          <p>"Menjadi pionir dalam menyediakan layanan kesehatan yang peduli terhadap mahasiswa STIEPAN, serta berkomitmen meningkatkan kesejahteraan dan kesehatan komunitas melalui inovasi, edukasi, dan kolaborasi yang berkelanjutan."</p>
+          <img src="logostiepan.jpeg" 
+                alt="Unit Kesehatan STIEPAN" 
+              style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:20px;">
+        </div>
+
+        <div class="reveal">
+          <div class="eyebrow" style="color:var(--ink-soft);"><span class="chip" style="background:var(--teal);"></span> Misi</div>
+          <div class="misi-list">
+            <div class="misi-item"><span class="misi-num">01</span><p>Menyediakan layanan kesehatan yang selalu ada saat dibutuhkan.</p></div>
+            <div class="misi-item"><span class="misi-num">02</span><p>Menyediakan edukasi dan penyuluhan kesehatan yang komprehensif kepada mahasiswa dan warga STIEPAN untuk meningkatkan kesadaran akan kesehatan, pencegahan penyakit, serta kepedulian atas kesehatan mental.</p></div>
+            <div class="misi-item"><span class="misi-num">03</span><p>Memastikan semua mahasiswa dan warga kampus memiliki akses yang mudah dan terjangkau ke layanan kesehatan yang kami tawarkan.</p></div>
+            <div class="misi-item"><span class="misi-num">04</span><p>Bekerja sama dengan berbagai pihak — lembaga pemerintah, swasta, dan komunitas — untuk menciptakan solusi kesehatan yang berkelanjutan.</p></div>
+            <div class="misi-item"><span class="misi-num">05</span><p>Berkomitmen meningkatkan kualitas hidup masyarakat kampus melalui program-program kesehatan yang terpadu dan berkesinambungan.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section id="layanan">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="chip" style="background:var(--teal);"></span> Layanan &amp; Fasilitas</div>
+        <div>
+          <h2>Empat bentuk dukungan yang selalu siap.</h2>
+          <p>Setiap layanan ditandai warna sesuai jenis dukungannya.</p>
+        </div>
+      </div>
+
+      <div class="layanan-grid">
+        <div class="layanan-card reveal">
+          <div class="layanan-icon">🛏️</div>
+          <h3>Fasilitas Istirahat (Bed)</h3>
+          <p>Tempat tidur yang bersih, tenang, dan nyaman jika kamu merasa lemas, pusing, atau butuh istirahat sejenak di sela jam kuliah.</p>
+        </div>
+        <div class="layanan-card reveal">
+          <div class="layanan-icon">💊</div>
+          <h3>Penyediaan Obat Gratis</h3>
+          <p>Akses obat dasar dan alat penunjang P3K — obat mag, flu, paracetamol, pembersih luka, hingga perban — sesuai SOP pertolongan pertama.</p>
+        </div>
+        <div class="layanan-card reveal">
+          <div class="layanan-icon">🛡️</div>
+          <h3>Sinergi &amp; Ruang Aman Kampus</h3>
+          <p>Berkomunikasi aktif dengan pihak kampus, termasuk Satgas PPKPT, demi ruang perlindungan yang aman saat kondisi darurat fisik maupun psikis.</p>
+        </div>
+        <div class="layanan-card reveal">
+          <div class="layanan-icon">🧰</div>
+          <h3>Dukungan Kegiatan Ormawa</h3>
+          <p>Peminjaman perlengkapan medis (tandu, tensimeter, dll) serta kotak P3K siap pakai untuk mendukung acara organisasi kemahasiswaan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAM & LOKASI -->
+  <section id="lokasi">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="chip" style="background:var(--rose);"></span> Jam Operasional dan Lokasi</div>
+        <div>
+          <h2>Temui kami di lantai 1.</h2>
+        </div>
+      </div>
+
+      <div class="info-strip reveal">
+        <div class="info-cell">
+          <span class="tag">Lokasi Ruangan</span>
+          <h3>Gedung Kampus STIEPAN, Lantai 1</h3>
+          <p>Tepat di sebelah Ruangan Dosen Pascasarjana — mudah dijangkau dari area perkuliahan utama.</p>
+        </div>
+        <div class="info-cell">
+          <span class="tag">Jam Operasional</span>
+          <h3>Senin – Jumat</h3>
+          <p>Mengikuti jadwal perkuliahan mahasiswa. Datang langsung atau diantar teman/dosen kapan saja dibutuhkan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOP -->
+  <section id="sop">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="chip" style="background:var(--amber);"></span> Standar Operasional Prosedur</div>
+        <div>
+          <h2>Alur penanganan mahasiswa sakit.</h2>
+          <p>Empat langkah yang kami tempuh, dari kedatangan hingga rujukan darurat bila diperlukan.</p>
+        </div>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <span class="tl-num">01</span>
+          <div class="tl-body"><h3>Kedatangan & Akses Ruangan</h3><p> Mahasiswa yang merasa sakit dapat datang langsung secara mandiri atau diantar oleh teman/dosen ke ruang Unit Kesehatan, dengan mengambil kunci ruangan yang tersedia di Pos Security / Keamanan terlebih dahulu.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-num">02</span>
+          <div class="tl-body"><h3>Absensi Masuk</h3><p>Mahasiswa wajib melakukan absensi masuk saat tiba di ruang Unit Kesehatan.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-num">03</span>
+          <div class="tl-body"><h3>Pemeriksaan Awal</h3><p> Jika ada petugas piket yang sedang tidak ada kelas dan bertepatan berada di lokasi, petugas akan membantu melakukan pemeriksaan fisik dasar (seperti cek suhu tubuh atau tekanan darah) dan mencatat keluhan mahasiswa.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-num">04</span>
+          <div class="tl-body"><h3>Pemberian Tindakan/Obat</h3><p>Mahasiswa dipersilakan beristirahat di fasilitas bed yang disediakan dan diberikan tindakan P3K atau obat dasar yang sesuai.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-num">05</span>
+          <div class="tl-body"><h3>Saran Penanganan Lanjutan</h3><p>Jika setelah beristirahat kondisi tidak kunjung membaik atau dirasa butuh penanganan lebih lanjut, petugas tidak bisa memberikan rujukan resmi, melainkan hanya menyarankan untuk pemeriksaan lebih lanjut ke puskesmas ataupun rumah sakit terdekat.</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-num">06</span>
+          <div class="tl-body"><h3>Absensi Keluar</h3><p>Mahasiswa wajib melakukan absensi keluar setelah selesai mendapatkan penanganan atau sebelum meninggalkan ruang Unit Kesehatan.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULIR & KONTAK -->
+  <section id="formulir">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="chip"></span> Integrasi Formulir &amp; Layanan Digital</div>
+        <div>
+          <h2>Peminjaman alat, stok obat, dan kontak darurat.</h2>
+          <p>Panitia Ormawa yang akan mengadakan kegiatan wajib mengajukan permohonan peminjaman kotak P3K maksimal H-3 sebelum acara melalui formulir digital di bawah ini.</p>
+        </div>
+      </div>
+
+      <div class="digital-grid reveal">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf08RMHGZXs3h_pVtqYrX6RcI4nHCv77F5HiJaJUt5JSzLJJA/viewform?usp=header" target="_blank" rel="noopener" class="digital-card">
+          <div>
+            <span class="tag">Formulir Peminjaman</span>
+            <h3>Peminjaman Alat Medis &amp; P3K Acara</h3>
+            <p>Untuk kegiatan Ormawa di dalam maupun luar kampus. Ajukan maksimal H-3 sebelum acara berlangsung.</p>
+          </div>
+          <span class="go">Buka formulir →</span>
+        </a>
+
+        <a href="https://drive.google.com/open?id=1itsM3xc9NbcZ6R6rP-wlZd4kEHFhLj4iri08gODG-Z8" target="_blank" rel="noopener" class="digital-card">
+          <div>
+            <span class="tag">Spreadsheet</span>
+            <h3>Stok Obat Unit Kesehatan</h3>
+            <p>Pantau ketersediaan obat dan alat P3K yang terupdate secara berkala.</p>
+          </div>
+          <span class="go">Lihat spreadsheet →</span>
+        </a>
+      </div>
+
+      <div class="contact-strip reveal">
+        <div class="who">
+          <span class="icon-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 3.9A10 10 0 0 0 3.4 16.2L2 22l6-1.6A10 10 0 1 0 20 3.9Z" stroke="#C4526A" stroke-width="1.6"/></svg>
+          </span>
+          <div>
+            <h4>Kontak Darurat WhatsApp</h4>
+            <p>Yohanes · Pengurus Unit Kesehatan &amp; Konseling</p>
+          </div>
+        </div>
+        <a href="https://wa.me/6281236201376" class="btn btn-outline">081236201376</a>
+      </div>
+
+      <!-- GAMBAR QR -->
+      <div style="text-align:center; margin:30px 0;">
+      <div class="eyebrow"><span class="chip"></span> SCAN untuk memberi kritik &amp; saran</div>
+        <img src="qrkritik.jpeg" 
+              alt="kritik unit STIEPAN"
+              style="width:400px; height:400px; object-fit:contain; border-radius:10px;">
+     </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="brand" style="gap:10px;">
+
+     <span class="brand-mark">
+      <img src="logostiepan.jpeg" alt="Logo STIEPAN">
+    </span>
+      
+      Unit Kesehatan &amp; Konseling STIEPAN
+    </div>
+    <div class="foot-links">
+      <a href="#tentang">Tentang</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#formulir">Formulir</a>
+    </div>
+    <p class="foot-note">Sekolah Tinggi Ilmu Ekonomi Balikpapan</p>
+     <p style="font-family:var(--mono);font-size:12px;text-align:center;color:var(--paper);"> 
+      @2026 STIEPAN. All rights reserved.
+  </p>
+  </div>
+</footer>
+
+<script>
+  const mnav = document.getElementById('mnav');
+  document.querySelectorAll('#mnav a').forEach(a => a.addEventListener('click', () => mnav.style.display='none'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
